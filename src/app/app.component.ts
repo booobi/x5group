@@ -1,10 +1,16 @@
 import { Component } from '@angular/core';
+import { environment } from '../environments/environment';
+import { faBuilding, faCity, faShoppingCart, faIdCardAlt } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'x5group';
+    // icons
+    faCity = faCity;
+    faBuilding = faBuilding;
+    faShoppingCart = faShoppingCart;
+    faIdCardAlt = faIdCardAlt;
 }

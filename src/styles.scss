@@ -1,1 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
+html, body {
+    height: 100%;
+    margin: 0px 0px;
+}
+@import '~@angular/material/theming';
+
+// always include only once per project
+@include mat-core();
+
+// import our custom theme
+@import 'light-theme.scss';
+
+// specify theme class eg: <body class="my-theme"> ... </body>
+.light-theme {
+
+  // use our theme with angular-material-theme mixin
+  @include angular-material-theme($light-theme);
+}

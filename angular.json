@@ -33,6 +33,14 @@
             "scripts": []
           },
           "configurations": {
+            "dev": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.dev.ts"
+                }
+              ]
+            },
             "production": {
               "fileReplacements": [
                 {
@@ -70,6 +78,9 @@
             "browserTarget": "x5group:build"
           },
           "configurations": {
+            "dev": {
+              "browserTarget": "x5group:build:dev"
+            },
             "production": {
               "browserTarget": "x5group:build:production"
             }
@@ -93,6 +104,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -118,12 +130,16 @@
             "devServerTarget": "x5group:serve"
           },
           "configurations": {
+            "dev": {
+              "devServerTarget": "x5group:serve:dev"
+            },
             "production": {
               "devServerTarget": "x5group:serve:production"
             }
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "x5group"
 }
