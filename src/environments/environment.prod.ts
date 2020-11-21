@@ -1,5 +1,5 @@
-import { Environment } from './types';
+import { Environment } from "./types";
 
-export const environment: Environment  = {
-    production: true,
+export const environment: Environment = {
+	production: true,
 };
