@@ -18,7 +18,7 @@ const routes: Route[] = [
     ],
     imports: [
         CommonModule,
-        RouterModule.forRoot(routes),
+        RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' }),
         MatCardModule,
         MatButtonModule,
     ],
