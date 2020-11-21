@@ -3,11 +3,11 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "lint": "eslint ./",
     "start:dev": "ng serve --configuration=dev",
     "start:production": "ng serve --configuration=production",
     "build": "ng build",
     "test": "ng test",
-    "lint": "ng lint",
     "e2e": "ng e2e"
   },
   "private": true,

@@ -1,4 +1,3 @@
-import { applySourceSpanToExpressionIfNeeded } from "@angular/compiler/src/output/output_ast";
 import { ChangeDetectionStrategy, Component } from "@angular/core";
 
 @Component({
@@ -8,5 +7,4 @@ import { ChangeDetectionStrategy, Component } from "@angular/core";
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent {
-	constructor() {}
 }
