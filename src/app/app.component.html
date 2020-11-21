@@ -1,36 +1,21 @@
-<mat-toolbar>
-    <mat-toolbar-row>
+<mat-toolbar #toolbar>
+    <mat-toolbar-row style="padding-right: 0;">
         <span><img class="app-logo" src="/assets/x5group_logo.png" alt="x5Group logo"></span>
         <span class="spacer"></span>
         <nav mat-tab-nav-bar>
-            <a mat-tab-link [routerLink]="['projects']" [active]="false">
+            <a *ngFor="let tab of tabsConfig" 
+                mat-tab-link
+                [routerLink]="tab.route"
+                [active]="router.isActive(tab.route, true)">
                 <span>
-                    Обекти
+                    {{ tab.displayName }}
                 </span>
-                <fa-icon [icon]="faCity"></fa-icon>
-            </a>
-            <a mat-tab-link [active]="true">
-                <span>
-                    Апартаменти
-                </span>
-                <fa-icon [icon]="faBuilding"></fa-icon>
-            </a>
-            <a mat-tab-link [active]="false">
-                <span>
-                    Продажби
-                </span>
-                <fa-icon [icon]="faShoppingCart"></fa-icon>
-
-            </a>
-            <a mat-tab-link [active]="false">
-                <span>
-                    Контакти
-                </span>
-                <fa-icon [icon]="faIdCardAlt"></fa-icon>
-
+                <fa-icon [icon]="tab.faIcon"></fa-icon>
             </a>
         </nav>
 
     </mat-toolbar-row>
 </mat-toolbar>
-<router-outlet></router-outlet>
+<div class="route-container" [ngStyle]="{ 'max-height': routeViewSize }">
+    <router-outlet></router-outlet>
+</div>
