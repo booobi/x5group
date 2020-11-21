@@ -3,7 +3,6 @@ import {
 	Component,
 	ElementRef,
 	ViewChild,
-	ViewEncapsulation,
 } from "@angular/core";
 import { Router } from "@angular/router";
 
@@ -76,9 +75,5 @@ export class AppComponent {
 
 	isActiveRoute(url: string) {
 		return this.router.isActive(url, true);
-	}
-
-	ngDoCheck()  {
-		console.log("CD on main");
 	}
 }
