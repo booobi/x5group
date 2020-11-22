@@ -1,24 +1,4 @@
-<mat-toolbar #toolbar>
-	<mat-toolbar-row style="padding-right: 0">
-		<span
-			><img class="app-logo" src="/assets/x5group_logo.png" alt="x5Group logo"
-		/></span>
-		<span class="spacer"></span>
-		<nav mat-tab-nav-bar>
-			<a
-				*ngFor="let tab of tabsConfig"
-				mat-tab-link
-				[routerLink]="tab.route"
-				[active]="router.isActive(tab.route, true)"
-			>
-				<span>
-					{{ tab.displayName }}
-				</span>
-				<fa-icon [icon]="tab.faIcon"></fa-icon>
-			</a>
-		</nav>
-	</mat-toolbar-row>
-</mat-toolbar>
+<app-navbar #navbar></app-navbar>
 <div class="route-container" [ngStyle]="{ 'max-height': routeViewSize }">
 	<router-outlet></router-outlet>
 </div>
