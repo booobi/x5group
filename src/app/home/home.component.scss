@@ -1,0 +1,40 @@
+.home-container {
+    margin-top: 3rem;
+    display: flex;
+    place-content: space-evenly;
+
+    & .home-intro {
+        width: 35%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        & .home-text{
+            text-align: center;
+            font-size: larger;
+        }
+    }
+
+    & .home-image {
+        width: 40%;
+    }
+}
+
+.to-projects {
+    place-content: space-around;
+    display: flex;
+    margin-top: 2rem;
+
+    &__button-content {
+        display: flex;
+
+        p {
+            margin: 0;
+        }
+        
+        fa-icon {
+            margin-left: 5px;
+        }
+
+    }
+}

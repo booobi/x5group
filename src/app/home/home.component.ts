@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from "@angular/core";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
 	selector: "app-home",
@@ -7,4 +8,5 @@ import { ChangeDetectionStrategy, Component } from "@angular/core";
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent {
+	readonly faArrowRight = faArrowRight;
 }

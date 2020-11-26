@@ -22,22 +22,22 @@ const tabsConfig: TabConfig[] = [
 	},
 	{
 		route: "/projects",
-		displayName: "Obekti",
+		displayName: "Обекти",
 		faIcon: faCity,
 	},
 	{
 		route: "/buildings",
-		displayName: "Apartament",
+		displayName: "Апратаменти",
 		faIcon: faBuilding,
 	},
 	{
 		route: "/shopping",
-		displayName: "Prodajbi",
+		displayName: "Продажби",
 		faIcon: faShoppingCart,
 	},
 	{
 		route: "contacts",
-		displayName: "kontakti",
+		displayName: "Контакти",
 		faIcon: faIdCardAlt,
 	},
 ];

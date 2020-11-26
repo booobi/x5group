@@ -16,3 +16,7 @@ body {
 	// use our theme with angular-material-theme mixin
 	@include angular-material-theme($light-theme);
 }
+
+* {
+    font-family: 'Comfortaa', cursive;
+}
