@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTabsModule } from '@angular/material/tabs';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Route[] = [
 	{ path: "", pathMatch: "full", redirectTo: "home" },
@@ -22,6 +23,7 @@ const routes: Route[] = [
 		CommonModule,
 		RouterModule.forRoot(routes, { relativeLinkResolution: "legacy" }),
 		BrowserAnimationsModule,
+		HttpClientModule,
 		MatCardModule,
 		MatToolbarModule,
 		MatTabsModule,

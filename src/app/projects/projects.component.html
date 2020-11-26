@@ -1,5 +1,5 @@
 <div class="projects__projects-container">
-	<mat-card *ngFor="let project of projects" class="projects__project">
+	<mat-card *ngFor="let project of projects$ | async" class="projects__project">
 		<mat-card-header class="projects__project__header">
 			<mat-card-title>{{ project.name }}</mat-card-title>
 			<mat-card-subtitle>{{ project?.subtitle }}</mat-card-subtitle>

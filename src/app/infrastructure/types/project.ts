@@ -4,3 +4,7 @@ export interface Project {
 	thumbnailUrl: string;
 	description: string;
 }
+
+export interface ProjectsResponse {
+	projects: Project[];
+}
