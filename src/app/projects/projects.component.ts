@@ -11,16 +11,11 @@ import { ProjectsFacade } from '../infrastructure/state/projects.facade';
 	styleUrls: ["./projects.component.scss"],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProjectsComponent implements OnInit {
-	isLoading$ = this.projectsFacade.isLoading$;
-
+export class ProjectsComponent {
 	projects$ = this.projectsFacade.projects$;
 
 	constructor(private projectsFacade: ProjectsFacade) {}
 
-	ngOnInit() {
-		this.projectsFacade.getProjects();
-	}
 	// projects = new Array(9).fill(null).map((_) => ({
 	// 	name: 'Сграда 1, комплекс "Магнолия"',
 	// 	description:
