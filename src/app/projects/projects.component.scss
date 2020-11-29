@@ -1,4 +1,4 @@
-@import "~@angular/material/theming";
+// @import "~@angular/material/theming";
 
 .projects {
 	&__projects-container {
@@ -11,7 +11,7 @@
 
 	&__project {
 		&:hover {
-			@include mat-elevation(8);
+			// @include mat-elevation(8);
 		}
 
 		&__header {
