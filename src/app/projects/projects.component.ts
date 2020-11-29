@@ -1,10 +1,8 @@
-import {
-	ChangeDetectionStrategy,
-	Component,
-	OnInit,
-} from "@angular/core";
+import { ChangeDetectionStrategy, Component } from "@angular/core";
 import { ProjectsFacade } from '../infrastructure/state/projects.facade';
-
+import {
+	faFacebookSquare
+} from "@fortawesome/free-brands-svg-icons";
 @Component({
 	selector: "app-projects",
 	templateUrl: "./projects.component.html",
@@ -12,6 +10,8 @@ import { ProjectsFacade } from '../infrastructure/state/projects.facade';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProjectsComponent {
+	readonly faFacebookSquare = faFacebookSquare;
+	
 	projects$ = this.projectsFacade.projects$;
 
 	constructor(private projectsFacade: ProjectsFacade) {}

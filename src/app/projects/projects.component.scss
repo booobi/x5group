@@ -4,9 +4,9 @@
 	&__projects-container {
 		margin-top: 30px;
 		grid-gap: 30px;
-		justify-content: center;
 		display: grid;
-		grid-template-columns: 30% 30% 30%;
+		grid-template-columns: 25% 25% 25% 25%;
+		padding: 0px 2rem;
 	}
 
 	&__project {
@@ -27,6 +27,15 @@
 				object-fit: cover;
 				margin: 0px 0px;
 			}
+		}
+
+		&__info {
+			padding-top: 10px;
+		}
+
+		&__actions {
+			display: flex;
+			justify-content: space-between;
 		}
 	}
 }

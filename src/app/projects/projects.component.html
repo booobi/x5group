@@ -12,13 +12,15 @@
 			/>
 		</div>
 		<mat-card-content>
-			<p>
-				{{ project.description }}
-			</p>
+			<div class="projects__project__info">
+				<div><strong class="">Проект:</strong> <em>'Тестера'</em></div>
+				<div><strong>Изпълнител:</strong> <em> 'Тестера' </em> </div>
+				<div><strong>Статус:</strong> <em> 'Завършен - 2012-12-12' </em> </div>
+			</div>
 		</mat-card-content>
-		<mat-card-actions>
-			<button mat-button>LIKE</button>
-			<button mat-button>SHARE</button>
+		<mat-card-actions class="projects__project__actions">
+			<button mat-raised-button color="primary">Преглед</button>
+			<button mat-stroked-button color="primary">Галерия <fa-icon [icon]="faFacebookSquare"></fa-icon></button>
 		</mat-card-actions>
 	</mat-card>
 </div>
