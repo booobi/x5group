@@ -1,26 +1,28 @@
-<div class="projects__projects-container">
-	<!-- <mat-card *ngFor="let project of projects$ | async" class="projects__project">
-		<mat-card-header class="projects__project__header">
-			<mat-card-title>{{ project.name }}</mat-card-title>
-			<mat-card-subtitle>{{ project?.subtitle }}</mat-card-subtitle>
-		</mat-card-header>
-		<div class="projects__project__image-container">
-			<img
-				mat-card-image
-				alt="Photo of a building project"
-				[src]="project.thumbnailUrl"
-			/>
+<div class="projects-container">
+	<div *ngFor="let project of projects$ | async" class="card h-100">
+		<div class="card-header">
+			{{ project.name }}
 		</div>
-		<mat-card-content>
+		<img class="card-img-top" [src]="project.thumbnailUrl" alt="Project card image">
+		<div class="card-body">
 			<div class="projects__project__info">
-				<div><strong class="">Проект:</strong> <em>'Тестера'</em></div>
-				<div><strong>Изпълнител:</strong> <em> 'Тестера' </em> </div>
-				<div><strong>Статус:</strong> <em> 'Завършен - 2012-12-12' </em> </div>
+				<div *ngIf="project.projectName">
+					<strong>Проект: </strong><em>{{ project.projectName }}</em>
+				</div>
+				<div>
+					<strong>Изпълнител: </strong><em>{{ project.buildCompanyName }}</em>
+				</div>
+				<div>
+					<strong>Статус: </strong><em>{{ projecStatusDisplayNamesMap[project.status] }} {{ project.dueDate ? ' - ' + project.dueDate : ''}}</em>
+					<em *ngIf="project.stage">(Етап: {{ project.stage }})</em>
+				</div>
 			</div>
-		</mat-card-content>
-		<mat-card-actions class="projects__project__actions">
-			<button mat-raised-button color="primary">Преглед</button>
-			<button mat-stroked-button color="primary">Галерия <fa-icon [icon]="faFacebookSquare"></fa-icon></button>
-		</mat-card-actions>
-	</mat-card> -->
+		</div>
+		<div class="card-footer d-flex justify-content-between">
+			<a class="btn btn-primary">Перглед</a>
+			<a class="btn btn-light ml-2">
+				Галерия <fa-icon [icon]="faFacebookSquare"></fa-icon>
+			</a>
+		</div>
+	</div>
 </div>

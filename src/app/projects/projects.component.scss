@@ -1,41 +1,12 @@
-// @import "~@angular/material/theming";
+.projects-container {
+	margin-top: 30px;
+	grid-gap: 30px;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	padding: 0px 2rem;
 
-.projects {
-	&__projects-container {
-		margin-top: 30px;
-		grid-gap: 30px;
-		display: grid;
-		grid-template-columns: 25% 25% 25% 25%;
-		padding: 0px 2rem;
-	}
-
-	&__project {
-		&:hover {
-			// @include mat-elevation(8);
-		}
-
-		&__header {
-			place-content: center;
-		}
-
-		&__image-container {
-			display: flex;
-			place-content: space-around;
-
-			img {
-				width: 100%;
-				object-fit: cover;
-				margin: 0px 0px;
-			}
-		}
-
-		&__info {
-			padding-top: 10px;
-		}
-
-		&__actions {
-			display: flex;
-			justify-content: space-between;
-		}
+	.card-img-top {
+		object-fit: cover;
+		height: 50%;
 	}
 }

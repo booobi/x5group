@@ -28,7 +28,7 @@ export class ProjectsFacade {
 			.pipe(take(1))
 
 			.subscribe((response: ProjectsResponse) =>
-				this._state$.next({ isLoading: false, projects: response.projects })
+				this._state$.next({ isLoading: false, projects: response.items })
 			);
 	}
 }

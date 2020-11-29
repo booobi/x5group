@@ -13,7 +13,7 @@ import { ProjectsFacade } from './infrastructure/state/projects.facade';
 	styleUrls: ["./app.component.scss"],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
 	@ViewChild("navbar", { read: ElementRef, static: true })
 	navbarEl: ElementRef;
 
@@ -21,9 +21,5 @@ export class AppComponent implements OnInit {
 	
 	get routeViewSize() {
 		return `calc(100% - ${this.navbarEl.nativeElement.offsetHeight}px)`;
-	}
-
-	ngOnInit() {
-		this.projectsFacade.getProjects();
 	}
 }

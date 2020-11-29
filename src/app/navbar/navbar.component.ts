@@ -61,8 +61,7 @@ export class NavbarComponent {
 
 	activeFragment$ = this.router.events.pipe(
 		filter((event) => event instanceof NavigationEnd),
-		map((event: any) => event.url.replace('/', '')),
-		tap(console.log)
+		map((event: any) => event.url.replace('/', ''))
 	);
 	constructor(public router: Router, public route: ActivatedRoute) {}
 
