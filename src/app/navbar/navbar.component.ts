@@ -1,5 +1,6 @@
+import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit } from "@angular/core";
-import { Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import {
 	faBuilding,
 	faCity,
@@ -7,36 +8,37 @@ import {
 	faIdCardAlt,
 	IconDefinition,
 } from "@fortawesome/free-solid-svg-icons";
+import { filter, map, startWith, tap } from 'rxjs/operators';
 
 interface TabConfig {
-	route: string;
+	url: string;
 	displayName: string;
 	faIcon: IconDefinition;
 }
 
 const tabsConfig: TabConfig[] = [
 	{
-		route: "/home",
+		url: "home",
 		displayName: "Начало",
 		faIcon: faCity,
 	},
 	{
-		route: "/projects",
+		url: "projects",
 		displayName: "Обекти",
 		faIcon: faCity,
 	},
 	{
-		route: "/buildings",
+		url: "buildings",
 		displayName: "Апратаменти",
 		faIcon: faBuilding,
 	},
 	{
-		route: "/shopping",
+		url: "shopping",
 		displayName: "Продажби",
 		faIcon: faShoppingCart,
 	},
 	{
-		route: "contacts",
+		url: "contacts",
 		displayName: "Контакти",
 		faIcon: faIdCardAlt,
 	},
@@ -57,7 +59,12 @@ export class NavbarComponent {
 	// tabs
 	readonly tabsConfig = tabsConfig;
 
-	constructor(public router: Router) {}
+	activeFragment$ = this.router.events.pipe(
+		filter((event) => event instanceof NavigationEnd),
+		map((event: any) => event.url.replace('/', '')),
+		tap(console.log)
+	);
+	constructor(public router: Router, public route: ActivatedRoute) {}
 
 	isActive(url: string) {
 		return this.router.isActive(url, true);

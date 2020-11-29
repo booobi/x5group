@@ -1,4 +1,4 @@
-<app-navbar #navbar></app-navbar>
-<div class="route-container" [ngStyle]="{ 'height': routeViewSize }">
+<app-navbar #navbar class="d-block"></app-navbar>
+<div class="overflow-auto" [ngStyle]="{ 'height': routeViewSize }">
 	<router-outlet></router-outlet>
 </div>
