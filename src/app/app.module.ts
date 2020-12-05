@@ -7,7 +7,7 @@ import { NavbarModule } from './navbar/navbar.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
-	declarations: [AppComponent],
+	declarations: [	AppComponent ],
 	imports: [
 		BrowserModule,
 		NavbarModule,
