@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { faFacebookSquare } from '@fortawesome/free-brands-svg-icons';
 import { Project } from 'src/app/infrastructure/types/project';
 import { projecStatusDisplayNamesMap } from './project-card.config';
@@ -8,15 +8,18 @@ import { projecStatusDisplayNamesMap } from './project-card.config';
     templateUrl: './project-card.component.html',
     styleUrls: ['./project-card.component.scss']
 })
-export class ProjectComponent implements OnInit {
+export class ProjectComponent {
     readonly projecStatusDisplayNamesMap = projecStatusDisplayNamesMap;
     readonly faFacebookSquare = faFacebookSquare;
 
     @Input() project: Project;
 
+    @Output() projectNavigate = new EventEmitter();
+
     constructor() { }
 
-    ngOnInit() {
+    onSeeMore() {
+        this.projectNavigate.emit('');
     }
 
 }

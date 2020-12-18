@@ -1,3 +1,7 @@
 <div class="projects-container">
-    <project *ngFor="let project of projects$ | async" [project]="project"></project>
+    <project
+        *ngFor="let project of projects$ | async" 
+        [@fadeState]="'in'"
+        [project]="project"
+        (projectNavigate)="onProjectNavigate(project.projectId)"></project>
 </div>

@@ -1,5 +1,4 @@
-import { BehaviorSubject } from "rxjs";
-import { map, take } from "rxjs/operators";
+import { take } from "rxjs/operators";
 import { HttpClient } from "@angular/common/http";
 
 import { ProjectsResponse } from "../types/project";
@@ -29,5 +28,9 @@ export class ProjectsFacade {
 			.subscribe((response: ProjectsResponse) =>
 				this.store.patchState({ isLoading: false, projects: response.items })
 			);
+    }
+
+    patchToInitial() {
+        this.store.patchToInitial();
     }
 }

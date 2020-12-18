@@ -4,6 +4,7 @@ export enum ProjectStatus {
 }
 
 export interface Project {
+    projectId: string;
 	name: string;
 	thumbnailUrl: string;
 	projectName?: string;
