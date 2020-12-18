@@ -1,4 +1,4 @@
-import { ProjectStatus } from '../infrastructure/types/project';
+import { ProjectStatus } from 'src/app/infrastructure/types/project';
 
 export const projecStatusDisplayNamesMap = {
     [ProjectStatus.COMPLETE]: 'Завършен',

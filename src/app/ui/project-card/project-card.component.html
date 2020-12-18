@@ -1,0 +1,29 @@
+<div class="card h-100">
+    <div class="card h-100">
+        <div class="card-header">
+            {{ project.name }}
+        </div>
+        <img class="card-img-top project-image" [src]="project.thumbnailUrl" alt="Project card image">
+        <div class="card-body">
+            <div class="projects__project__info">
+                <div *ngIf="project.projectName">
+                    <strong>Проект: </strong><em>{{ project.projectName }}</em>
+                </div>
+                <div>
+                    <strong>Изпълнител: </strong><em>{{ project.buildCompanyName }}</em>
+                </div>
+                <div>
+                    <strong>Статус: </strong><em>{{ projecStatusDisplayNamesMap[project.status] }}
+                        {{ project.dueDate ? ' - ' + project.dueDate : ''}}</em>
+                    <em *ngIf="project.stage">(Етап: {{ project.stage }})</em>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer d-flex justify-content-between">
+            <a class="btn btn-primary">Перглед</a>
+            <a class="btn btn-light ml-2">
+                Галерия <fa-icon [icon]="faFacebookSquare"></fa-icon>
+            </a>
+        </div>
+    </div>
+</div>

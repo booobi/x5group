@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HttpClientModule } from '@angular/common/http';
 import { ProjectDetailsComponent } from './project-details/project-details.component';
+import { ProjectModule } from './ui/project-card/project-card.module';
 
 const routes: Route[] = [
 	{ path: "", pathMatch: "full", redirectTo: "home" },
@@ -22,7 +23,8 @@ const routes: Route[] = [
 		CommonModule,
 		RouterModule.forRoot(routes, { relativeLinkResolution: "legacy" }),
 		BrowserAnimationsModule,
-		HttpClientModule,
+        HttpClientModule,
+        ProjectModule,
 		FontAwesomeModule,
 	],
 	exports: [RouterModule],

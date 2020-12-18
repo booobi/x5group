@@ -30,6 +30,4 @@ export class ProjectsFacade {
 				this.store.patchState({ isLoading: false, projects: response.items })
 			);
     }
-    
-    getProject
 }
