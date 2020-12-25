@@ -1,20 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
     selector: 'app-project-details',
     templateUrl: './project-details.component.html',
     styleUrls: ['./project-details.component.scss']
 })
-export class ProjectDetailsComponent implements OnInit {
-
+export class ProjectDetailsComponent {
+    readonly masonryOptions = {
+        fitWidth: true,
+        gutter: 10,
+    }
 
     constructor() { }
 
-    ngOnInit() {
-    }
-
     imagesArr = [
-        "https://scontent.fsof9-1.fna.fbcdn.net/v/t1.0-1/c29.0.200.200a/p200x200/10153836_317811061754178_2223658331007815188_n.jpg?_nc_cat=107&ccb=2&_nc_sid=dbb9e7&_nc_ohc=ejE96f5suhkAX_kUL8P&_nc_ht=scontent.fsof9-1.fna&tp=27&oh=78ee0c95cb6130a7b5ef9a1128609cb2&oe=5FF138AE",
         "https://scontent.fsof9-1.fna.fbcdn.net/v/t1.0-9/94104004_1445134122355194_6489518953725952000_o.jpg?_nc_cat=111&ccb=2&_nc_sid=6e5ad9&_nc_ohc=8OHK58fL6MQAX-gPkKW&_nc_ht=scontent.fsof9-1.fna&oh=93c1bb430005c912bb8b369105a1dea2&oe=5FF115F3",
         "https://scontent.fsof9-1.fna.fbcdn.net/v/t1.0-9/94104004_1445134122355194_6489518953725952000_o.jpg?_nc_cat=111&ccb=2&_nc_sid=6e5ad9&_nc_ohc=8OHK58fL6MQAX-gPkKW&_nc_ht=scontent.fsof9-1.fna&oh=93c1bb430005c912bb8b369105a1dea2&oe=5FF115F3",
         "https://scontent.fsof9-1.fna.fbcdn.net/v/t1.0-0/c34.0.206.206a/p206x206/38891266_980397058828905_1093809934136508416_o.jpg?_nc_cat=104&ccb=2&_nc_sid=cdbe9c&_nc_ohc=rjHZPSN0bJ4AX9167Sv&_nc_ht=scontent.fsof9-1.fna&tp=27&oh=75795d99f6aa99b82c392788fa88b1ab&oe=5FF09C47",

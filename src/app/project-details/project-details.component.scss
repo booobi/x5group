@@ -1,0 +1,12 @@
+ngx-masonry {
+    margin: auto;
+    
+    .masonry-item {
+        width: 300px;
+        img {
+            width: 100%;
+            border-radius: 4px;        
+        }
+        margin-bottom: 10px;
+    }
+}

@@ -8,7 +8,7 @@ import { projecStatusDisplayNamesMap } from './project-card.config';
     templateUrl: './project-card.component.html',
     styleUrls: ['./project-card.component.scss']
 })
-export class ProjectComponent {
+export class ProjectCardComponent {
     readonly projecStatusDisplayNamesMap = projecStatusDisplayNamesMap;
     readonly faFacebookSquare = faFacebookSquare;
 
