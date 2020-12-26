@@ -11,6 +11,7 @@ import { HomeComponent } from "./home/home.component";
 import { ProjectsComponent } from "./projects/projects.component";
 import { ProjectDetailsComponent } from './project-details/project-details.component';
 import { ProjectCardModule } from './ui/project-card/project-card.module';
+import { GalleryImagePreviewModule } from "./ui/gallery-image-preview/gallery-image-preview.component.module";
 
 const routes: Route[] = [
 	{ path: "", pathMatch: "full", redirectTo: "home" },
@@ -27,9 +28,10 @@ const routes: Route[] = [
 		BrowserAnimationsModule,
         HttpClientModule,
         ProjectCardModule,
+        GalleryImagePreviewModule,
         FontAwesomeModule,
         NgxMasonryModule,
-	],
+    ],
 	exports: [RouterModule],
 })
 export class AppRoutingModule {}

@@ -16,8 +16,6 @@ import { ProjectsFacade } from './infrastructure/state/projects.facade';
 export class AppComponent {
 	@ViewChild("navbar", { read: ElementRef, static: true })
 	navbarEl: ElementRef;
-
-	constructor(private projectsFacade: ProjectsFacade) {}
 	
 	get routeViewSize() {
 		return `calc(100% - ${this.navbarEl.nativeElement.offsetHeight}px)`;

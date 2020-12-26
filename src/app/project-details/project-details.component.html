@@ -14,8 +14,16 @@
         </div>
     </div>
     <ngx-masonry [options]="masonryOptions">
-        <div ngxMasonryItem class="masonry-item" *ngFor="let imageSrc of imagesArr">
-            <img class="test" [src]="imageSrc" alt="Project card image">
-       </div>
+        <div 
+            *ngFor="let imageSrc of images$ | async"
+            ngxMasonryItem
+            class="masonry-item"
+            (click)="onImgClick(imageSrc)"
+        >
+            <img [src]="imageSrc" alt="Project card image">
+        </div>
     </ngx-masonry>
+    <div class="d-flex justify-content-center mb-2">
+        <button class="btn btn-primary" (click)="onShowMore()">Още</button>
+    </div>
 </div>
