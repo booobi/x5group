@@ -1,20 +1,20 @@
-<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <img class="navbar-brand app-logo" src="/assets/x5group_logo.png" width="30" height="30" alt="">
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li
-        *ngFor="let tab of tabsConfig" 
-        class="nav-item">
-        <a class="nav-link" [class.active]="isActive(tab.url)" [routerLink]="tab.url">
-          <fa-icon [icon]="tab.faIcon"></fa-icon>
-          <div>{{ tab.displayName }}</div>
+<header class="d-flex align-items-end justify-content-between">
+    <div class="">
+        <img class="navbar-brand app-logo" src="/assets/x5group_logo.png" width="30" height="30" alt="">
+    </div>
+    <nav mat-tab-nav-bar>
+        <a *ngFor="let tab of tabsConfig" mat-tab-link [routerLink]="tab.url" [active]="router.isActive(tab.url, false)">
+            <span>
+                {{ tab.displayName }}
+            </span>
+            <fa-icon [icon]="tab.faIcon"></fa-icon>
         </a>
-      </li>
-    </ul>
-  </div>
-</nav> -->
+    </nav>
+    
+</header>
 
-<ul ngbNav [activeId]="activeFragment$ | async" class="nav-tabs">
+<!-- bootstrap nav -->
+<!-- <ul ngbNav [activeId]="activeFragment$ | async" class="nav-tabs">
   <img class="navbar-brand app-logo" src="/assets/x5group_logo.png" width="30" height="30" alt="">
   <div class="flex-grow-1 flex-shrink-1"></div>
   <li
@@ -23,4 +23,4 @@
     class="align-self-end">
     <a ngbNavLink [routerLink]="tab.url">{{ tab.displayName }}</a>
   </li>
-</ul>
+</ul> -->

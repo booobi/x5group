@@ -1,10 +1,11 @@
 import { take } from "rxjs/operators";
 import { HttpClient } from "@angular/common/http";
 
-import { ProjectsResponse } from "../types/project";
+import { Project, ProjectsResponse } from "../types/project";
 import { defaultProjectsState, ProjectsState } from "./projects.state";
 import { Injectable } from "@angular/core";
 import { Store } from '../store';
+import { Observable } from "rxjs";
 
 @Injectable({ providedIn: "root" })
 export class ProjectsFacade {
@@ -13,9 +14,9 @@ export class ProjectsFacade {
     
     store: Store<ProjectsState> = new Store(defaultProjectsState);
 
-	isLoading$ = this.store.select(state => state.isLoading);
+	isLoading$: Observable<boolean> = this.store.select(state => state.isLoading);
 
-	projects$ = this.store.select((state) => state.projects);
+	projects$: Observable<Project[]> = this.store.select((state) => state.projects);
 
 	constructor(private http: HttpClient) {}
 

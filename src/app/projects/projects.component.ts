@@ -15,7 +15,9 @@ import { Router } from '@angular/router';
     animations: projectsAnimations,
 })
 export class ProjectsComponent implements OnInit, OnDestroy {
-	projects$: Observable<Project[]> = this.projectsFacade.projects$;
+    projects$ = this.projectsFacade.projects$;
+    
+    isLoading = this.projectsFacade.isLoading$;
 	
     constructor(private router: Router, private projectsFacade: ProjectsFacade) {}
     

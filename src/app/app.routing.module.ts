@@ -12,6 +12,7 @@ import { ProjectsComponent } from "./projects/projects.component";
 import { ProjectDetailsComponent } from './project-details/project-details.component';
 import { ProjectCardModule } from './ui/project-card/project-card.module';
 import { GalleryImagePreviewModule } from "./ui/gallery-image-preview/gallery-image-preview.component.module";
+import { ProjectsModule } from "./projects/projects.module";
 
 const routes: Route[] = [
 	{ path: "", pathMatch: "full", redirectTo: "home" },
@@ -21,16 +22,16 @@ const routes: Route[] = [
 
 ];
 @NgModule({
-	declarations: [HomeComponent, ProjectsComponent, ProjectDetailsComponent],
+	declarations: [HomeComponent, ProjectDetailsComponent],
 	imports: [
 		CommonModule,
 		RouterModule.forRoot(routes, { relativeLinkResolution: "legacy" }),
-		BrowserAnimationsModule,
-        HttpClientModule,
-        ProjectCardModule,
-        GalleryImagePreviewModule,
+		HttpClientModule,
         FontAwesomeModule,
-        NgxMasonryModule,
+        // I want to go with a feature module based approach, (like you'd do with lazy loading)
+        // but that means also exporting all dependency modules
+        // TODO: maybe actually switch to lazy loading just for the heck of it?
+        ProjectsModule,
     ],
 	exports: [RouterModule],
 })
