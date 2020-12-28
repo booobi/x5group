@@ -1,21 +1,21 @@
 import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 
-import { ProjectsComponent } from "./projects.component";
+import { FeatureHomeComponent } from "./feature-home.component";
 
-describe("ProjectsComponent", () => {
-	let component: ProjectsComponent;
-	let fixture: ComponentFixture<ProjectsComponent>;
+describe("FeatureHomeComponent", () => {
+	let component: FeatureHomeComponent;
+	let fixture: ComponentFixture<FeatureHomeComponent>;
 
 	beforeEach(
 		waitForAsync(() => {
 			TestBed.configureTestingModule({
-				declarations: [ProjectsComponent],
+				declarations: [FeatureHomeComponent],
 			}).compileComponents();
 		})
 	);
 
 	beforeEach(() => {
-		fixture = TestBed.createComponent(ProjectsComponent);
+		fixture = TestBed.createComponent(FeatureHomeComponent);
 		component = fixture.componentInstance;
 		fixture.detectChanges();
 	});

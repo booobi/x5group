@@ -1,24 +1,22 @@
+import { BehaviorSubject, combineLatest, of } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { ChangeDetectorRef, Component, NgZone } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { BehaviorSubject, combineLatest, of } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
 import { GalleryImagePreviewComponent } from '../ui/gallery-image-preview/gallery-image-preview.component';
 import { images } from './images';
 
 @Component({
-    selector: 'app-project-details',
-    templateUrl: './project-details.component.html',
-    styleUrls: ['./project-details.component.scss']
+    selector: 'feature-project-details',
+    templateUrl: './feature-project-details.component.html',
+    styleUrls: ['./feature-project-details.component.scss']
 })
-export class ProjectDetailsComponent {
+export class FeatureProjectDetailsComponent {
     readonly masonryOptions = {
         fitWidth: true,
         gutter: 10,
     }
 
-    readonly PAGE_SIZE = 10;
-
-    test$ = new BehaviorSubject('teeeeeest');
+    readonly IMAGE_PAGE_SIZE = 10;
 
     constructor(private modalService: NgbModal, public cdr: ChangeDetectorRef, public zone: NgZone) { }
 
@@ -34,6 +32,6 @@ export class ProjectDetailsComponent {
     page$ = new BehaviorSubject(1);
 
     images$ = combineLatest([of(images), this.page$]).pipe(
-        map(([images, page]) => images.slice(0, page * this.PAGE_SIZE)),
+        map(([images, page]) => images.slice(0, page * this.IMAGE_PAGE_SIZE)),
     )
 }

@@ -1,28 +1,26 @@
 
-import { Observable } from 'rxjs';
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from "@angular/core";
 
 import { ProjectsFacade } from "../infrastructure/state/projects.facade";
-import { Project } from "../infrastructure/types/project";
-import { projectsAnimations } from './projects.animations';
+import { projectsAnimations } from './feature-projects.animations';
 import { Router } from '@angular/router';
 
 @Component({
-	selector: "app-projects",
-	templateUrl: "./projects.component.html",
-	styleUrls: ["./projects.component.scss"],
+	selector: "feature-projects",
+	templateUrl: "./feature-projects.component.html",
+	styleUrls: ["./feature-projects.component.scss"],
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: projectsAnimations,
 })
-export class ProjectsComponent implements OnInit, OnDestroy {
+export class FeatureProjectsComponent implements OnInit, OnDestroy {
     projects$ = this.projectsFacade.projects$;
     
-    isLoading = this.projectsFacade.isLoading$;
-	
+    isLoading$ = this.projectsFacade.isLoading$;
+
     constructor(private router: Router, private projectsFacade: ProjectsFacade) {}
     
     onProjectNavigate(projectId: string) {
-        this.router.navigate(['projects', projectId], {});
+        this.router.navigate(['projects', projectId]);
     }
 
 	ngOnInit() {
