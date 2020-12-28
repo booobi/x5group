@@ -21,7 +21,6 @@ const routes: Route[] = [
 ];
 @NgModule({
 	imports: [
-		CommonModule,
 		RouterModule.forRoot(routes, { relativeLinkResolution: "legacy" }),
 		HttpClientModule,
 		// I want to go with a feature module based approach, (sorry if you don't like it, but it's clean af)
