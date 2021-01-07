@@ -8,7 +8,7 @@ import {
 	faIdCardAlt,
 	IconDefinition,
 } from "@fortawesome/free-solid-svg-icons";
-import { filter, map, startWith, tap } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
 
 interface TabConfig {
 	url: string;
@@ -38,7 +38,7 @@ const tabsConfig: TabConfig[] = [
 		faIcon: faShoppingCart,
 	},
 	{
-		url: "contacts",
+		url: "contact",
 		displayName: "Контакти",
 		faIcon: faIdCardAlt,
 	},

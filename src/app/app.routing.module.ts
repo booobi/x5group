@@ -1,6 +1,5 @@
 import { NgModule } from "@angular/core";
 
-import { CommonModule } from "@angular/common";
 import { Route, RouterModule } from "@angular/router";
 import { HttpClientModule } from '@angular/common/http';
 
@@ -10,13 +9,17 @@ import { FeatureProjectDetailsModule } from "./feature-project-details/feature-p
 import { FeatureProjectDetailsComponent } from './feature-project-details/feature-project-details.component';
 import { FeatureProjectsModule } from "./feature-projects/feature-projects.module";
 import { FeatureProjectsComponent } from "./feature-projects/feature-projects.component";
+import { FeatureContactUsModule } from "./feature-contact-us/feature-contact-us.module";
+import { FeatureContactUsComponent } from "./feature-contact-us/feature-contact-us.component";
 
 
 const routes: Route[] = [
 	{ path: "", pathMatch: "full", redirectTo: "home" },
 	{ path: "home", component: FeatureHomeComponent },
 	{ path: "projects", component: FeatureProjectsComponent, pathMatch: 'full' },
-    { path: 'projects/:projectId', component: FeatureProjectDetailsComponent },
+	{ path: 'projects/:projectId', component: FeatureProjectDetailsComponent },
+	{ path: "contact", component: FeatureContactUsComponent },
+
 
 ];
 @NgModule({
@@ -31,6 +34,7 @@ const routes: Route[] = [
 		FeatureHomeModule,
 		FeatureProjectsModule,
 		FeatureProjectDetailsModule,
+		FeatureContactUsModule,
     ],
 	exports: [RouterModule],
 })
