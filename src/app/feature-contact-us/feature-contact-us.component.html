@@ -1,49 +1,76 @@
-<div class="pt-3 d-flex flex-column align-items-center">
-  <div>
-    Имате въпрос? Свържете се с нас!
-  </div>
-  <div class="d-flex justify-content-between border w-50 mt-3">
-    <div class="w-50 p-3">
-      <div>
-        <fa-icon [icon]="faMailBulk"></fa-icon>
-        Пишете ни:
-      </div>
-      <form [formGroup]="contactFormGroup" (ngSubmit)="onSubmit()" class="w-100">
-        <mat-form-field class="d-block">
-          <mat-label>Вашият имайл:</mat-label>
-          <input formControlName="email" matInput type="email">
-          <mat-error *ngIf="emailControl.hasError('required')">
-            Имейлът е <strong>задължителен</strong>.
-          </mat-error>
-          <mat-error *ngIf="emailControl.hasError('email')">
-            Трябва да бъде валиден имейл.
-          </mat-error>
-        </mat-form-field>
-        <mat-form-field class="d-block">
-          <mat-label>Телефон (незадължително):</mat-label>
-          <input formControlName="phone" matInput type="phone">
-        </mat-form-field>
-        <mat-form-field class="d-block">
-          <mat-label>Вашият въпрос:</mat-label>
-          <textarea formControlName="message" matInput rows="8"> </textarea>
-          <mat-error *ngIf="messageControl.hasError('required')">
-            Съобщението е <strong>задължително</strong>.
-          </mat-error>
-        </mat-form-field>
-        <button mat-raised-button color="primary" class="mt-2">Изпрати</button>
-      </form>
-    </div>
-    <div class="d-flex flex-column justify-content-center align-items-center bg-secondary p-3 text-light" style="width: 40%;">
-      <p>Или директно на:</p>
-      <p> 
-        <fa-icon [icon]="faPhone"></fa-icon>
-        +111 111 111111
-      </p>
-      <p>
-        <fa-icon [icon]="faMailBulk"></fa-icon>
-        testEmail@abv.bg
-      </p>
-    </div>
-  </div>
+<ng-template #formTpl>
+    <ng-container [ngSwitch]="contactState$ | async">
+            <div
+            *ngSwitchCase="ContactStatus.NOT_CONTACTED" 
+            class="pt-3 d-flex flex-column align-items-center">
+            <div>
+                Имате въпрос? Свържете се с нас!
+            </div>
+            <div class="d-flex justify-content-between border w-50 mt-3">
+                <div class="w-50 p-3">
+                    <div>
+                        <fa-icon [icon]="faMailBulk"></fa-icon>
+                        Пишете ни:
+                    </div>
+                    <form [formGroup]="contactFormGroup" (ngSubmit)="onSubmit()" class="w-100">
+                        <mat-form-field class="d-block">
+                            <mat-label>Вашият имeйл:</mat-label>
+                            <input formControlName="email" matInput type="email">
+                            <mat-error *ngIf="emailControl.hasError('required')">
+                            Имейлът е <strong>задължителен</strong>.
+                            </mat-error>
+                            <mat-error *ngIf="emailControl.hasError('email')">
+                            Трябва да бъде валиден имейл.
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="d-block">
+                            <mat-label>Телефон (незадължително):</mat-label>
+                            <input formControlName="phone" matInput type="phone">
+                        </mat-form-field>
+                        <mat-form-field class="d-block">
+                            <mat-label>Вашият въпрос:</mat-label>
+                            <textarea formControlName="message" matInput rows="8"> </textarea>
+                            <mat-error *ngIf="messageControl.hasError('required')">
+                            Съобщението е <strong>задължително</strong>.
+                            </mat-error>
+                        </mat-form-field>
+                        <button mat-raised-button color="primary" class="mt-2">Изпрати</button>
+                    </form>
+                </div>
+                <div 
+                    class="d-flex flex-column justify-content-center align-items-center bg-secondary p-3 text-light"
+                    style="width: 40%;">
+                    <p>Или директно на:</p>
+                    <p> 
+                        <fa-icon [icon]="faPhone"></fa-icon>
+                        +111 111 111111
+                    </p>
+                    <p>
+                        <fa-icon [icon]="faMailBulk"></fa-icon>
+                        testEmail@abv.bg
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div 
+            *ngSwitchCase="ContactStatus.CONTACT_SUCCESS"
+            class="d-flex flex-column h-100 align-items-center justify-content-center">
+            <div class="alert alert-success">Благодарим ви, че се свързахте с нас! Ще се опитаме да ви отговорим възможно най - скоро!</div>
+            <a routerLink="/home"> Обратно към начална страница? </a>
+        </div>
 
+        <div 
+            *ngSwitchCase="ContactStatus.CONTACT_FAIL"
+            class="d-flex flex-column h-100 align-items-center justify-content-center">
+            <div class="alert alert-danger">Възникна проблем.<a class="blue" style="cursor: pointer;" (click)="onRetry($event)"> Опитайте отново? </a></div>            
+        </div>
+    </ng-container>      
+</ng-template>
+
+<div
+    *ngIf="isLoading$ | async else formTpl"
+    class="d-flex h-100 justify-content-center align-items-center">
+    <mat-progress-spinner mode="indeterminate">
+    </mat-progress-spinner>    
 </div>
+

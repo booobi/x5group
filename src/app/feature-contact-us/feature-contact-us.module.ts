@@ -7,6 +7,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { FeatureContactUsComponent } from './feature-contact-us.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
@@ -16,7 +18,9 @@ import { FeatureContactUsComponent } from './feature-contact-us.component';
     MatInputModule,
     MatFormFieldModule,
     MatButtonModule,
+    MatProgressSpinnerModule,
     FontAwesomeModule,
+    RouterModule,
   ],
   declarations: [FeatureContactUsComponent]
 })
