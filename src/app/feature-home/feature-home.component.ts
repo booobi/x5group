@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from "@angular/core";
+import { Router } from "@angular/router";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
@@ -8,5 +9,11 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FeatureHomeComponent {
-	readonly faArrowRight = faArrowRight;
+    readonly faArrowRight = faArrowRight;
+    
+    constructor(private router: Router) {}
+
+    toProjects() {
+        this.router.navigateByUrl('/projects');
+    }
 }

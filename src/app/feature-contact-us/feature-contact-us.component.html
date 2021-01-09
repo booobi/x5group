@@ -2,12 +2,12 @@
     <ng-container [ngSwitch]="contactState$ | async">
             <div
             *ngSwitchCase="ContactStatus.NOT_CONTACTED" 
-            class="pt-3 d-flex flex-column align-items-center">
-            <div>
+            class="pt-3 container">
+            <div class="row justify-content-center">
                 Имате въпрос? Свържете се с нас!
             </div>
-            <div class="d-flex justify-content-between border w-50 mt-3">
-                <div class="w-50 p-3">
+            <div class="row justify-content-center border mt-3">
+                <div class="col p-3">
                     <div>
                         <fa-icon [icon]="faMailBulk"></fa-icon>
                         Пишете ни:
@@ -37,19 +37,18 @@
                         <button mat-raised-button color="primary" class="mt-2">Изпрати</button>
                     </form>
                 </div>
-                <div 
-                    class="d-flex flex-column justify-content-center align-items-center bg-secondary p-3 text-light"
-                    style="width: 40%;">
-                    <p>Или директно на:</p>
-                    <p> 
-                        <fa-icon [icon]="faPhone"></fa-icon>
+                <div class="col bg-secondary p-3 text-light d-flex flex-column align-items-center justify-content-center p-0">
+                    <div> Или директно на: </div>
+                    <div>
+                        <fa-icon [icon]="faPhone" class="mr-1"></fa-icon>
                         +111 111 111111
-                    </p>
-                    <p>
-                        <fa-icon [icon]="faMailBulk"></fa-icon>
+                        
+                    </div>
+                    <div>
+                        <fa-icon [icon]="faMailBulk" class="mr-1"></fa-icon>
                         testEmail@abv.bg
-                    </p>
-                </div>
+                    </div>
+                </div>    
             </div>
         </div>
         <div 

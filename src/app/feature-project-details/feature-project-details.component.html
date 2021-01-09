@@ -1,11 +1,11 @@
-<div class="container-fluid">
+<div class="container">
     <div class="row mt-3 justify-content-center">
         <div class="col-sm-6"><img class="img-fluid" src="/assets/home_image.jpg"></div>
     </div>
     <div class="row mt-3">
         <div class="col-sm">
-            <p class="bg-primary">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
+            <p class="project-description">
+                (Описание на сградата) Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
                 ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
                 laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in 
                 voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat 
@@ -13,6 +13,8 @@
             </p>
         </div>
     </div>
+</div>
+<div class="container-fluid">
     <ngx-masonry [options]="masonryOptions">
         <div
             *ngFor="let imageSrc of images$ | async"
@@ -25,5 +27,5 @@
     </ngx-masonry>
     <div class="d-flex justify-content-center mb-2">
         <button class="btn btn-primary" (click)="onShowMore()">Още</button>
-    </div>
+    </div>    
 </div>
