@@ -28,6 +28,6 @@ export class FeatureProjectsComponent implements OnInit, OnDestroy {
     }
     
     ngOnDestroy() {
-        this.projectsFacade.patchToInitial();
+        this.projectsFacade.reset();
     }
 }
