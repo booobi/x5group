@@ -1,0 +1,46 @@
+<div class="container">
+    <form class="row mt-4" *ngIf="filterForm" [formGroup]="filterForm">
+        <mat-checkbox
+            *ngFor="let controlKey of formKeysArr; index as i"
+            class="col"
+            [formControl]="filterForm.controls[controlKey]"
+        >
+            {{ (projectNameGetter$ | async)(controlKey) }}
+        </mat-checkbox>
+    </form>
+        
+    <table class="w-100" mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Име</th>
+            <td class="text-left" mat-cell *matCellDef="let sale">{{sale.name}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="type">
+            <th mat-header-cell *matHeaderCellDef>Тип</th>
+            <td mat-cell *matCellDef="let sale">{{ getUnityTypeName(sale.type) }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="floor">
+            <th mat-header-cell *matHeaderCellDef>Етаж</th>
+            <td mat-cell *matCellDef="let sale">{{sale.floor}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="area">
+            <th mat-header-cell *matHeaderCellDef>
+                Площ
+            </th>
+            <td mat-cell *matCellDef="let sale">{{sale.area}} кв.м</td>
+        </ng-container>
+
+        <ng-container matColumnDef="price">
+            <th mat-header-cell *matHeaderCellDef>Цена</th>
+            <td mat-cell *matCellDef="let sale">{{sale.price}} EUR</td>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="columns"></tr>
+        <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+    </table>
+</div>
+
+<button (click)="testFilter()">Filter</button>

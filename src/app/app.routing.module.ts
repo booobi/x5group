@@ -11,6 +11,8 @@ import { FeatureProjectsModule } from "./feature-projects/feature-projects.modul
 import { FeatureProjectsComponent } from "./feature-projects/feature-projects.component";
 import { FeatureContactUsModule } from "./feature-contact-us/feature-contact-us.module";
 import { FeatureContactUsComponent } from "./feature-contact-us/feature-contact-us.component";
+import { FeatureSalesModule } from "./feature-sales/feature-sales.module";
+import { FeatureSalesComponent } from "./feature-sales/feature-sales.component";
 
 
 const routes: Route[] = [
@@ -18,7 +20,8 @@ const routes: Route[] = [
 	{ path: "home", component: FeatureHomeComponent },
 	{ path: "projects", component: FeatureProjectsComponent, pathMatch: 'full' },
 	{ path: 'projects/:projectId', component: FeatureProjectDetailsComponent },
-	{ path: "contact", component: FeatureContactUsComponent },
+    { path: "contact", component: FeatureContactUsComponent },
+    { path: "sales", component: FeatureSalesComponent },
 
 
 ];
@@ -34,7 +37,8 @@ const routes: Route[] = [
 		FeatureHomeModule,
 		FeatureProjectsModule,
 		FeatureProjectDetailsModule,
-		FeatureContactUsModule,
+        FeatureContactUsModule,
+        FeatureSalesModule,
     ],
 	exports: [RouterModule],
 })
