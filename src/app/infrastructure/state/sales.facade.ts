@@ -24,7 +24,7 @@ export class FeatureSalesFacade extends BaseFacade<SalesState> {
             .get<SalesResponse>(this.endpoint)
             .subscribe(
                 response => this.store.patchState({ isLoading: false, salesData: response.items }),
-                response => this.store.patchState({ isLoading: false })
+                _ => this.store.patchState({ isLoading: false })
             );
     }
 }

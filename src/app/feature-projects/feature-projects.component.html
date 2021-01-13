@@ -5,7 +5,7 @@
     </mat-progress-spinner>    
 </div>
 <ng-template #projectsTpl>
-    <div class="projects-container">
+    <div class="projects-container pt-4">
         <project
             *ngFor="let project of projects$ | async" 
             [@fadeState]="'in'"

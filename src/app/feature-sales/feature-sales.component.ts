@@ -1,86 +1,97 @@
 import { Subject } from "rxjs";
-import { map, shareReplay, takeUntil, tap } from "rxjs/operators";
+import { map, shareReplay, switchMap, takeUntil } from "rxjs/operators";
 
-import { ChangeDetectorRef, Component, OnInit } from "@angular/core";
+import { AfterViewInit, Component, OnInit, ViewChild } from "@angular/core";
 import { MatTableDataSource } from "@angular/material/table";
 import { FeatureSalesFacade } from "../infrastructure/state/sales.facade";
 import { SalesUnit } from "../infrastructure/state/sales.state";
 import { getUnityTypeName } from "./feature-sales.config";
-import { FormArray, FormBuilder, FormGroup } from "@angular/forms";
+import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
+import { MatSort } from "@angular/material/sort";
 
 @Component({
 	selector: "app-feature-sales",
 	templateUrl: "./feature-sales.component.html",
 	styleUrls: ["./feature-sales.component.scss"],
 })
-export class FeatureSalesComponent implements OnInit {
+export class FeatureSalesComponent implements OnInit, AfterViewInit {
 	readonly columns = ["name", "type", "floor", "area", "price"];
 
-    readonly getUnityTypeName = getUnityTypeName;
-    
-    filterForm: FormGroup;
+	readonly getUnityTypeName = getUnityTypeName;
+
+	@ViewChild(MatSort) sort: MatSort;
 
 	projectNameGetter$ = this.facade.salesData$.pipe(
-        map(salesData => projectId => salesData.find(data => data.projectId === projectId).projectName),
-        shareReplay(1),
-    );
-
-	testFilter() {
-		this.dataSource.filter = "1";
-	}
+		map((salesData) => (projectId) =>
+			salesData.find((data) => data.projectId === projectId).projectName
+		),
+		shareReplay(1)
+	);
 
 	destroyed$ = new Subject<boolean>();
 
 	dataSource = new MatTableDataSource();
 
-	constructor(
-		private facade: FeatureSalesFacade,
-		public fb: FormBuilder,
-	) {}
+	filtersForm$ = this.facade.salesData$.pipe(
+		// get unique sale projects ids
+		map((sales) =>
+			sales
+				.filter(
+					(sale, currentIndex, arr) =>
+						arr.findIndex((s) => s.projectId === sale.projectId) ===
+						currentIndex
+				)
+				.map((sale) => sale.projectId)
+		),
+		map(
+			(projectIds) =>
+				new FormGroup(
+					projectIds.reduce(
+						(config, projectId) => ({
+							...config,
+							[projectId]: new FormControl(),
+						}),
+						{}
+					)
+				)
+		),
+		shareReplay(1),
+	);
+
+	filtersFormKeys$ = this.filtersForm$.pipe(
+		map((filtersForm) => Object.keys(filtersForm.controls))
+	);
+
+	constructor(private facade: FeatureSalesFacade, public fb: FormBuilder) {}
 
 	ngOnInit() {
+		this.facade.getSales();
 		this.facade.salesData$
 			.pipe(takeUntil(this.destroyed$))
 			.subscribe((salesData) => (this.dataSource.data = salesData));
 
 		this.dataSource.filterPredicate = (sale: SalesUnit, projectIds: string) =>
-            projectIds.includes(sale.projectId);
-            
-            this.facade.salesData$
-							.pipe(
-								// get unique sale projects ids
-								map((sales) =>
-									sales.filter(
-										(sale, currentIndex, arr) =>
-											arr.findIndex((s) => s.projectId === sale.projectId) ===
-											currentIndex
-									)
-								),
-								map((uniqueProjectSales) =>
-									uniqueProjectSales.map((sale) => ({
-										id: sale.projectId,
-										displayName: sale.projectName,
-									}))
-								),
-								tap(
-									objts =>
-										(this.filterForm = this.fb.group(
-											objts.reduce(
-												(config, obj) => ({ ...config, [obj.id]: false }),
-												{}
-											)
-										))
-								),
-								tap((_) => console.log(this.filterForm))
-							)
-                            .subscribe();
-                            
-                            this.filterForm.valueChanges.subscribe(console.log);
-    }
-    
-    get formKeysArr() {
-        return Object.keys(this.filterForm.controls);
-    }
+			projectIds.includes(sale.projectId);
+			
+		this.filtersForm$
+			.pipe(
+				switchMap((form) => form.valueChanges),
+				map((formValue) =>
+					Object.entries(formValue).reduce(
+						(accumulatedProjectIds, [formKey, value]) =>
+							value
+								? `${accumulatedProjectIds},${formKey}`
+								: accumulatedProjectIds,
+						""
+					)
+				)
+			)
+			.subscribe((value) => this.dataSource.filter = value);
+	}
+	
+	ngAfterViewInit() {
+		this.dataSource.sort = this.sort;
+	}
 
 	ngOnDestroy() {
 		this.destroyed$.next(true);

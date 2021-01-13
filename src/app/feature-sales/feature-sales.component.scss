@@ -1,5 +1,18 @@
+@import '~@angular/material/theming';
+@import '../../theme.scss';
+
+// why @AngularTeam, why
+::ng-deep .mat-sort-header-container {
+    justify-content: center !important;
+}
+
+.table-header {
+    background-color: mat-color($candy-app-primary);
+}
 table {
-    th, td {
+    
+
+    td {
         text-align: center;
     }
 }
