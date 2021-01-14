@@ -1,8 +1,6 @@
-<mat-card class="example-card">
+<mat-card>
     <mat-card-header>
-      <!-- <div mat-card-avatar class="example-header-image"></div> -->
       <mat-card-title> {{ project.name }}</mat-card-title>
-      <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
     </mat-card-header>
     <img mat-card-image [src]="project.thumbnailUrl" alt="Project card image">
     <mat-card-content>
@@ -23,7 +21,7 @@
     <mat-card-actions class="d-flex justify-content-between">
         <button mat-raised-button color="primary" (click)="onSeeMore()">Перглед</button>
         <a mat-raised-button>
-            Галерия <fa-icon [icon]="faFacebookSquare"></fa-icon>
+            Галерия <fa-icon class="d-inline-flex" [icon]="faFacebookSquare"></fa-icon>
         </a>
     </mat-card-actions>
   </mat-card>

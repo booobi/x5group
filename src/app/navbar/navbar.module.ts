@@ -2,7 +2,6 @@ import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { RouterModule } from '@angular/router';
 import { MatTabsModule } from '@angular/material/tabs';
-import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { NavbarComponent } from './navbar.component';
@@ -14,7 +13,6 @@ import { NavbarComponent } from './navbar.component';
         RouterModule,
         FontAwesomeModule,
         MatTabsModule,
-		NgbNavModule,
 	],
 	exports: [NavbarComponent],
 })

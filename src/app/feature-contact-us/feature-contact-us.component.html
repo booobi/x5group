@@ -9,7 +9,7 @@
             <div class="row justify-content-center border mt-3">
                 <div class="col p-3">
                     <div>
-                        <fa-icon [icon]="faMailBulk"></fa-icon>
+                        <fa-icon class="d-inline-flex" [icon]="faMailBulk"></fa-icon>
                         Пишете ни:
                     </div>
                     <form [formGroup]="contactFormGroup" (ngSubmit)="onSubmit()" class="w-100">
@@ -40,12 +40,12 @@
                 <div class="col bg-secondary p-3 text-light d-flex flex-column align-items-center justify-content-center p-0">
                     <div> Или директно на: </div>
                     <div>
-                        <fa-icon [icon]="faPhone" class="mr-1"></fa-icon>
+                        <fa-icon class="d-inline-flex" [icon]="faPhone" class="mr-1"></fa-icon>
                         +111 111 111111
                         
                     </div>
                     <div>
-                        <fa-icon [icon]="faMailBulk" class="mr-1"></fa-icon>
+                        <fa-icon class="d-inline-flex" [icon]="faMailBulk" class="mr-1"></fa-icon>
                         testEmail@abv.bg
                     </div>
                 </div>    

@@ -1,4 +1,5 @@
 add social media to contacts
-hide More button when there's none
 add themes? (you showoff!)
 projects list gallery url
+add loading to table view
+mobile navbar

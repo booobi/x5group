@@ -21,7 +21,7 @@
     <div class="container-fluid">
         <ngx-masonry [options]="masonryOptions">
             <div
-                *ngFor="let imageSrc of galleryImages$ | async"
+                *ngFor="let imageSrc of displayedGalleryImages$ | async"
                 ngxMasonryItem
                 class="masonry-item"
                 (click)="onImgClick(imageSrc)"
@@ -30,7 +30,19 @@
             </div>
         </ngx-masonry>
         <div class="d-flex justify-content-center mb-2">
-            <button mat-raised-button color="primary" (click)="onShowMore()">Още</button>
+            <button 
+                *ngIf="!(hasReachedEnd$ | async) else backButtonTpl"
+                mat-raised-button color="primary"
+                (click)="onShowMore()">Още
+            </button>
+            <ng-template #backButtonTpl>
+                <button 
+                    mat-raised-button color="primary"
+                    (click)="onScrollTop()">
+                    <span>Обратно</span>
+                    <fa-icon class="ml-1 d-inline-flex" [icon]="faArrowUp"></fa-icon>
+                </button>
+            </ng-template>
         </div>    
     </div>        
 </ng-template>

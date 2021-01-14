@@ -25,7 +25,14 @@ html, body {
 /* Bootstrap */
 @import '~bootstrap/scss/bootstrap';
 
-.modal-content {
-    background-color: transparent;
-    border: none;
+.modal-reset {
+    mat-dialog-container {
+        padding: 0;
+        background-color: transparent;
+        box-shadow: none;
+
+        button.mat-raised-button:focus {
+            outline: none;
+        }
+    }
 }

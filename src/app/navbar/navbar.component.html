@@ -7,20 +7,7 @@
             <span>
                 {{ tab.displayName }}
             </span>
-            <fa-icon [icon]="tab.faIcon"></fa-icon>
+            <fa-icon class="d-inline-flex" [icon]="tab.faIcon"></fa-icon>
         </a>
     </nav>
-    
 </header>
-
-<!-- bootstrap nav -->
-<!-- <ul ngbNav [activeId]="activeFragment$ | async" class="nav-tabs">
-  <img class="navbar-brand app-logo" src="/assets/x5group_logo.png" width="30" height="30" alt="">
-  <div class="flex-grow-1 flex-shrink-1"></div>
-  <li
-    *ngFor="let tab of tabsConfig"
-    [ngbNavItem]="tab.url"
-    class="align-self-end">
-    <a ngbNavLink [routerLink]="tab.url">{{ tab.displayName }}</a>
-  </li>
-</ul> -->
