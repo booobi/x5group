@@ -1,7 +1,4 @@
 add social media to contacts
-use grid from projects list
-use grid for home
 hide More button when there's none
-equaliza color schemes between angular and bootstrap
-replace bootstrap buttons with material buttons (& card?)
 add themes? (you showoff!)
+projects list gallery url

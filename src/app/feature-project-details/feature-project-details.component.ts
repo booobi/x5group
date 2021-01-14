@@ -1,11 +1,10 @@
-import { BehaviorSubject, combineLatest, of } from 'rxjs';
-import { map, take, tap } from 'rxjs/operators';
-import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { BehaviorSubject, combineLatest } from 'rxjs';
+import { map, take } from 'rxjs/operators';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ProjectDetailsFacade } from '../infrastructure/state/project-details.facade';
 import { GalleryImagePreviewComponent } from '../ui/gallery-image-preview/gallery-image-preview.component';
-import { images } from './images';
-import { ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 const IMAGE_PAGE_SIZE = 10;
 

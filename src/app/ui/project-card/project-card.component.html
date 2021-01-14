@@ -1,29 +1,29 @@
-<div class="card h-100">
-    <div class="card h-100">
-        <div class="card-header">
-            {{ project.name }}
-        </div>
-        <img class="card-img-top project-image" [src]="project.thumbnailUrl" alt="Project card image">
-        <div class="card-body">
-            <div class="projects__project__info">
-                <div *ngIf="project.projectName">
-                    <strong>Проект: </strong><em>{{ project.projectName }}</em>
-                </div>
-                <div>
-                    <strong>Изпълнител: </strong><em>{{ project.buildCompanyName }}</em>
-                </div>
-                <div>
-                    <strong>Статус: </strong><em>{{ projecStatusDisplayNamesMap[project.status] }}
-                        {{ project.dueDate ? ' - ' + project.dueDate : ''}}</em>
-                    <em *ngIf="project.stage">(Етап: {{ project.stage }})</em>
-                </div>
+<mat-card class="example-card">
+    <mat-card-header>
+      <!-- <div mat-card-avatar class="example-header-image"></div> -->
+      <mat-card-title> {{ project.name }}</mat-card-title>
+      <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+    </mat-card-header>
+    <img mat-card-image [src]="project.thumbnailUrl" alt="Project card image">
+    <mat-card-content>
+        <div class="projects__project__info">
+            <div *ngIf="project.projectName">
+                <strong>Проект: </strong><em>{{ project.projectName }}</em>
+            </div>
+            <div>
+                <strong>Изпълнител: </strong><em>{{ project.buildCompanyName }}</em>
+            </div>
+            <div>
+                <strong>Статус: </strong><em>{{ projecStatusDisplayNamesMap[project.status] }}
+                    {{ project.dueDate ? ' - ' + project.dueDate : ''}}</em>
+                <em *ngIf="project.stage">(Етап: {{ project.stage }})</em>
             </div>
         </div>
-        <div class="card-footer d-flex justify-content-between">
-            <button mat-raised-button color="primary" (click)="onSeeMore()">Перглед</button>
-            <a mat-raised-button>
-                Галерия <fa-icon [icon]="faFacebookSquare"></fa-icon>
-            </a>
-        </div>
-    </div>
-</div>
+    </mat-card-content>
+    <mat-card-actions class="d-flex justify-content-between">
+        <button mat-raised-button color="primary" (click)="onSeeMore()">Перглед</button>
+        <a mat-raised-button>
+            Галерия <fa-icon [icon]="faFacebookSquare"></fa-icon>
+        </a>
+    </mat-card-actions>
+  </mat-card>
