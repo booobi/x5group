@@ -1,5 +1,6 @@
 import { Component, OnDestroy } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { faFacebookSquare } from "@fortawesome/free-brands-svg-icons";
 import { faMailBulk, faPhone } from "@fortawesome/free-solid-svg-icons";
 import { FeatureContactUsFacade } from "../infrastructure/state/contact-us.facade";
 import { ContactStatus } from "../infrastructure/types/contact";
@@ -11,6 +12,7 @@ import { ContactStatus } from "../infrastructure/types/contact";
 })
 export class FeatureContactUsComponent implements OnDestroy {
 	readonly faMailBulk = faMailBulk;
+	readonly faFacebookSquare = faFacebookSquare;
     readonly faPhone = faPhone;
     readonly ContactStatus = ContactStatus;
     

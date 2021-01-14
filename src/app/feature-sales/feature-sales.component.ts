@@ -19,6 +19,8 @@ export class FeatureSalesComponent implements OnInit, AfterViewInit {
 
 	readonly getUnityTypeName = getUnityTypeName;
 
+	isLoading$ = this.facade.isLoading$;
+	
 	@ViewChild(MatSort) sort: MatSort;
 
 	projectNameGetter$ = this.facade.salesData$.pipe(

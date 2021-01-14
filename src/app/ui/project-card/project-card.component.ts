@@ -16,8 +16,6 @@ export class ProjectCardComponent {
 
     @Output() projectNavigate = new EventEmitter();
 
-    constructor() { }
-
     onSeeMore() {
         this.projectNavigate.emit('');
     }

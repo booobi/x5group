@@ -1,5 +1,2 @@
-add social media to contacts
 add themes? (you showoff!)
-projects list gallery url
-add loading to table view
-mobile navbar
+responsieve navbar

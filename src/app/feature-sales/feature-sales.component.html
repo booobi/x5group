@@ -1,47 +1,56 @@
-<div class="container">
-    <form class="row mt-4" 
-        *ngIf="filtersForm$ | async as filtersForm" 
-        [formGroup]="filtersForm">
-        <mat-checkbox
-            *ngFor="let controlKey of filtersFormKeys$ | async; index as i"
-            class="col"
-            color="primary"
-            [formControl]="filtersForm.controls[controlKey]"
-        >
-            {{ (projectNameGetter$ | async)(controlKey) }}
-        </mat-checkbox>
-    </form>
+<div
+    *ngIf="isLoading$ | async else salesTpl"
+    class="d-flex h-100 justify-content-center align-items-center">
+    <mat-progress-spinner mode="indeterminate">
+    </mat-progress-spinner>    
 </div>
-<div class="container h-50 overflow-auto mt-2 p-0">
-    <table class="w-100 mat-elevation-z2" mat-table matSort [dataSource]="dataSource">
-        <ng-container matColumnDef="name">
-            <th class="w-50 text-white" mat-header-cell *matHeaderCellDef>Име</th>
-            <td class="text-left" mat-cell *matCellDef="let sale">{{sale.name}}</td>
-        </ng-container>
 
-        <ng-container matColumnDef="type">
-            <th style="width: 10%" class="text-white" mat-sort-header mat-header-cell *matHeaderCellDef>Тип</th>
-            <td mat-cell *matCellDef="let sale">{{ getUnityTypeName(sale.type) }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="floor">
-            <th class="text-white" mat-header-cell mat-sort-header *matHeaderCellDef>Етаж</th>
-            <td mat-cell *matCellDef="let sale">{{sale.floor}}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="area">
-            <th class="text-white" mat-header-cell mat-sort-header *matHeaderCellDef>
-                Площ
-            </th>
-            <td mat-cell *matCellDef="let sale">{{sale.area}} кв.м</td>
-        </ng-container>
-
-        <ng-container matColumnDef="price">
-            <th class="text-white" mat-header-cell mat-sort-header *matHeaderCellDef>Цена</th>
-            <td mat-cell *matCellDef="let sale">{{sale.price}} EUR</td>
-        </ng-container>
-
-        <tr class="table-header" mat-header-row *matHeaderRowDef="columns; sticky: true"></tr>
-        <tr mat-row *matRowDef="let row; columns: columns; let i = index" [class.highlight]="i % 2"></tr>
-    </table>
-</div>
+<ng-template #salesTpl>
+    <div class="container">
+        <form class="row mt-4" 
+            *ngIf="filtersForm$ | async as filtersForm" 
+            [formGroup]="filtersForm">
+            <mat-checkbox
+                *ngFor="let controlKey of filtersFormKeys$ | async; index as i"
+                class="col"
+                color="primary"
+                [formControl]="filtersForm.controls[controlKey]"
+            >
+                {{ (projectNameGetter$ | async)(controlKey) }}
+            </mat-checkbox>
+        </form>
+    </div>
+    <div class="container h-50 overflow-auto mt-2 p-0">
+        <table class="w-100 mat-elevation-z2" mat-table matSort [dataSource]="dataSource">
+            <ng-container matColumnDef="name">
+                <th class="w-50 text-white" mat-header-cell *matHeaderCellDef>Име</th>
+                <td class="text-left" mat-cell *matCellDef="let sale">{{sale.name}}</td>
+            </ng-container>
+    
+            <ng-container matColumnDef="type">
+                <th style="width: 10%" class="text-white" mat-sort-header mat-header-cell *matHeaderCellDef>Тип</th>
+                <td mat-cell *matCellDef="let sale">{{ getUnityTypeName(sale.type) }}</td>
+            </ng-container>
+    
+            <ng-container matColumnDef="floor">
+                <th class="text-white" mat-header-cell mat-sort-header *matHeaderCellDef>Етаж</th>
+                <td mat-cell *matCellDef="let sale">{{sale.floor}}</td>
+            </ng-container>
+    
+            <ng-container matColumnDef="area">
+                <th class="text-white" mat-header-cell mat-sort-header *matHeaderCellDef>
+                    Площ
+                </th>
+                <td mat-cell *matCellDef="let sale">{{sale.area}} кв.м</td>
+            </ng-container>
+    
+            <ng-container matColumnDef="price">
+                <th class="text-white" mat-header-cell mat-sort-header *matHeaderCellDef>Цена</th>
+                <td mat-cell *matCellDef="let sale">{{sale.price}} EUR</td>
+            </ng-container>
+    
+            <tr class="table-header" mat-header-row *matHeaderRowDef="columns; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: columns; let i = index" [class.highlight]="i % 2"></tr>
+        </table>
+    </div>
+</ng-template>
