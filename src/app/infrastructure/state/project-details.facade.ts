@@ -1,6 +1,7 @@
 import { Observable } from "rxjs";
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { TransferStateService } from "@scullyio/ng-lib";
 
 import { environment } from '../../../environments/environment';
 import { Store } from '../store';
@@ -15,14 +16,13 @@ export class ProjectDetailsFacade extends BaseFacade<ProjectDetailsState> {
 
     projectDetails$: Observable<ProjectDetails> = this.store.select(state => state.projectDetails);
     
-	constructor(private http: HttpClient) {
+	constructor(private http: HttpClient, private transferState: TransferStateService) {
         super(new Store(defaultProjectDetailsState));
     }
 
 	getProject(projectId: string) {
 		this.store.patchState({ isLoading: true });
-		this.http
-			.get<ProjectDetails>(`${this.base_endpoint}/${projectId}`)
+		this.transferState.useScullyTransferState(projectId, this.http.get<ProjectDetails>(`${this.base_endpoint}/${projectId}`))
 			.subscribe((response: ProjectDetails) =>
 				this.store.patchState({ isLoading: false, projectDetails: response })
 			);

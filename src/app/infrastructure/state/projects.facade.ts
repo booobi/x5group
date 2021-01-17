@@ -1,14 +1,16 @@
-import { Observable } from "rxjs";
-import { take } from "rxjs/operators";
+import { Observable, zip } from "rxjs";
+import { map, switchMap, tap } from "rxjs/operators";
 import { HttpClient } from "@angular/common/http";
+import { TransferStateService } from "@scullyio/ng-lib";
 
-import { environment } from '../../../environments/environment';
+import { environment } from "../../../environments/environment";
 
 import { Project, ProjectsResponse } from "../types/project";
 import { defaultProjectsState, ProjectsState } from "./projects.state";
 import { Injectable } from "@angular/core";
-import { Store } from '../store';
+import { Store } from "../store";
 import { BaseFacade } from "../resetable.facade";
+import { DomSanitizer } from "@angular/platform-browser";
 
 @Injectable({ providedIn: "root" })
 export class ProjectsFacade extends BaseFacade<ProjectsState> {
@@ -22,17 +24,23 @@ export class ProjectsFacade extends BaseFacade<ProjectsState> {
 		(state) => state.projects
 	);
 
-	constructor(private http: HttpClient) {
-        super(new Store(defaultProjectsState));
-    }
+	constructor(
+		private http: HttpClient,
+		private sanitizer: DomSanitizer,
+		private transferState: TransferStateService
+	) {
+		super(new Store(defaultProjectsState));
+	}
 
 	getProjects() {
 		this.store.patchState({ isLoading: true });
-		this.http
-			.get<ProjectsResponse>(this.endpoint)
-			.pipe(take(1))
-			.subscribe((response: ProjectsResponse) =>
-				this.store.patchState({ isLoading: false, projects: response.items })
+		this.transferState
+			.useScullyTransferState(
+				"projects",
+				this.http.get<ProjectsResponse>(this.endpoint)
+			)
+			.subscribe(({ items }) =>
+				this.store.patchState({ isLoading: false, projects: items })
 			);
 	}
 }
