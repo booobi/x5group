@@ -6,9 +6,10 @@
 </div>
 <ng-template #projectsTpl>
     <div class="container-fluid pt-4">
-        <div class="row justify-content-center projects-container">
+        <div class="row projects-container">
             <project-card
                 class="col-lg-3 col-md-6 col-sm-12 mb-4"
+                elavateOnHover
                 *ngFor="let project of projects$ | async" 
                 [@fadeState]="'in'"
                 [project]="project"

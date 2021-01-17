@@ -1,3 +1,9 @@
-.project-image {
-    height: 45%;
+@import '~@angular/material/theming';
+
+:host[elavateOnHover] {
+    mat-card {
+        &:hover {
+            @include mat-elevation(10);    
+        }
+    }
 }

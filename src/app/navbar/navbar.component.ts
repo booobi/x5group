@@ -20,18 +20,13 @@ const tabsConfig: TabConfig[] = [
 	{
 		url: "home",
 		displayName: "Начало",
-		faIcon: faCity,
+		faIcon: faBuilding,
 	},
 	{
 		url: "projects",
 		displayName: "Обекти",
 		faIcon: faCity,
 	},
-	// {
-	// 	url: "buildings",
-	// 	displayName: "Апратаменти",
-	// 	faIcon: faBuilding,
-	// },
 	{
 		url: "sales",
 		displayName: "Продажби",
