@@ -1,4 +1,5 @@
-export interface ProjectDetails { 
+export interface ProjectDetails {
+    projectId: string; 
     thumbnailUrl: string;
     description: string;
     galleryImageUrls: string[];

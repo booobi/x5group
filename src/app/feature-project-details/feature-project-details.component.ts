@@ -6,6 +6,8 @@ import { ActivatedRoute } from "@angular/router";
 import { MatDialog } from '@angular/material/dialog';
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 
+import { environment } from "src/environments/environment";
+
 import {
 	RouteContainerSelectorToken,
 } from "../providers";
@@ -31,20 +33,25 @@ export class FeatureProjectDetailsComponent implements OnInit, OnDestroy {
 
 	details$ = this.facade.projectDetails$;
 
-	detailsGalleryImageUrls$ = this.details$.pipe(
-		map((details) => details.galleryImageUrls)
+	// just using API as a single source of truth - to correctly index images on FE and scrape correct images from scripts
+	galleryImageUrls$ = this.details$.pipe(
+		map((details) => details.galleryImageUrls.map((_, index) => `${environment.PROJECTS_IMAGES_URL + details.projectId}/${index}.jpg`))
 	);
+
+	thumbnailUrl$ = this.details$.pipe(
+		map(details => `${environment.PROJECTS_IMAGES_URL + details.projectId}/thumbnail.jpg`)
+	)
 
 	page$ = new BehaviorSubject(1);
 
 	displayedGalleryImages$ = combineLatest([
-		this.detailsGalleryImageUrls$,
+		this.galleryImageUrls$,
 		this.page$,
 	]).pipe(map(([images, page]) => images.slice(0, page * IMAGE_PAGE_SIZE)));
 
 	hasReachedEnd$ = combineLatest([
 		this.displayedGalleryImages$,
-		this.detailsGalleryImageUrls$,
+		this.galleryImageUrls$,
 	]).pipe(map(([displayed, rendered]) => displayed.length === rendered.length));
 
 	constructor(
