@@ -1,3 +1,5 @@
+http://booobi.x5group.s3-website-eu-west-1.amazonaws.com/home
+
 # What is this?
 
 This is a website that tries to present the work of a local construction and investment company. It started as a funny idea and ended up as a practice project for technologies that I wanted to explore, namely some AWS services (Lamda, Dynamodb, s3, SES, CloudWatch & others), [Scully](https://scully.io/) and Angular Material. There's is no particular reason for using this technology stack - just practice.
